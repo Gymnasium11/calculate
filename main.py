@@ -1,81 +1,57 @@
 import random
-def main(level):
-    if level=="1":
-        oper=["+","-","*","/"]
-        rndoper=random.choice(oper)
-        if rndoper=="+":
-            def sum(x,y):
-                x=random.randint(1,50)
-                y=random.randint(1,50)
-                res=x+y
-                return res
-        if rndoper=="-":
-            def sub(x,y):
-                """Вычитание, не могу понять как сделать так,
-                уменьшаемое было всегда больше вычитаемого"""
-                pass
-        if rndoper=="*":
-            def mult(x,y):
-                x=random.randint(1,15)
-                y=random.randint(1,15)
-                multres=x*y
-                return multres
 
-        if rndoper=="/":
+
+def main(level):
+    oper = ["+", "-", "*", "/"]
+    rndoper = random.choice(oper)
+
+    # def sum(x,y):
+    # def mult(x,y):
+    # def sub(x,y):
+    # def div(x,y):
+
+    if level == "1":
+        if rndoper in '+-':  # объявляю x и y если будут действия бычитания или сложения
+            x, y = random.randint(1, 50), random.randint(1, 50)
+        else:  # объявляю x и y если будут действия умножения или деления
+            x, y = random.randint(1, 10), random.randint(1, 10)
+
+        if rndoper == "+":
+            pass
+        elif rndoper == "-":
+            pass
+        elif rndoper == "*":
+            pass
+        elif rndoper == "/":
             """То же самое, как с вычитанием"""
             pass
-    elif level=="2":
-        oper = ["+", "-", "*", "/"]
-        rndoper = random.choice(oper)
+
+    elif level == "2":
+        if rndoper in '+-':  # объявляю x и y если будут действия бычитания или сложения
+            x, y = random.randint(1, 100), random.randint(1, 100)
+        else:  # объявляю x и y если будут действия умножения или деления
+            x, y = random.randint(1, 30), random.randint(1, 30)
+
         if rndoper == "+":
-            def sum(x, y):
-                x = random.randint(1, 100)
-                y = random.randint(1, 100)
-                res = x + y
-                return res
-        if rndoper == "-":
-            def sub(x, y):
-                x = random.randint(1,100)
-                y = random.randint(1,100)
-                subres = x-y
-                return subres
-        if rndoper == "*":
-            def mult(x, y):
-                x = random.randint(1, 30)
-                y = random.randint(1, 30)
-                multres = x * y
-                return multres
+            pass
+        elif rndoper == "-":
+            pass
+        elif rndoper == "*":
+            pass
+        elif rndoper == "/":
+            pass
 
-        if rndoper == "/":
-            def div(x,y):
-                """Здесь наверное нужно сделать так,
-                 чтобы делилось без остатка"""
-                pass
-        elif level=="3":
-            oper = ["+", "-", "*", "/"]
-            rndoper = random.choice(oper)
-            if rndoper == "+":
-                def sum(x, y):
-                    x = random.randint(1, 150)
-                    y = random.randint(1, 150)
-                    res = x + y
-                    return res
-            if rndoper == "-":
-                def sub(x, y):
-                    x = random.randint(1, 100)
-                    y = random.randint(1, 100)
-                    subres = x - y
-                    return subres
-            if rndoper == "*":
-                def mult(x, y):
-                    x = random.randint(1, 50)
-                    y = random.randint(1, 50)
-                    multres = x * y
-                    return multres
+    elif level == "3":
+        if rndoper in '+-':  # объявляю x и y если будут действия бычитания или сложения
+            x, y = random.randint(1, 100), random.randint(1, 100)
+        else:  # объявляю x и y если будут действия умножения или деления
+            x, y = random.randint(1, 50), random.randint(1, 50)
 
-            if rndoper == "/":
-                def div(x,y):
-                    x=random.randint(1,100)
-                    y=random.randint(1,100)
-                    divres=float(x/y)
-                    return divres
+        if rndoper == "+":
+            pass
+        elif rndoper == "-":
+            pass
+        elif rndoper == "*":
+            pass
+        elif rndoper == "/":
+            pass
