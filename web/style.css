@@ -6,6 +6,7 @@ body{
 }
 .container-app{
     display: flex;
+    width: 200px;
     background: snow;
     justify-content: space-between;
 
