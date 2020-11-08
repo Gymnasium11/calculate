@@ -1,0 +1,13 @@
+.GUI{
+    display: block;
+    height: 700px;
+    width: 400px;
+    background: linear-gradient(to top left, powderblue, pink);
+
+}
+.button{
+    height: 100px;
+    width: 100px;
+    border: 1px;
+    background-color: cadetblue;
+}

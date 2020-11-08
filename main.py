@@ -1,4 +1,5 @@
 import random
+import eel
 
 
 def sum(x, y):
@@ -21,6 +22,7 @@ def div(y, res):
     return (x, "/", y, res)
 
 
+@eel.expose
 def main(level):
     oper = ["+", "-", "*", "/"]
     rndoper = random.choice(oper)
@@ -68,3 +70,7 @@ def main(level):
             return mult(x, y)
         elif rndoper == "/":
             return div(x, y)
+
+
+eel.init('web')
+eel.start("main.html", size = (700, 400))

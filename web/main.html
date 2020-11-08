@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+
+<div class="container-app">
+    <div class="level">
+        <button id="1" onclick="main('1')">1 level</button>
+        <button id="2" onclick="main('2')">2 level</button>
+        <button id="3" onclick="main('3')">3 level</button>
+    </div>
+    <div class="calculate">
+        <span id="info"></span>
+        <input>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function main(level){
+        eel.main(level)(callBack())
+    }
+
+    function callBack(result){
+        document.getElementById('info').innerHTML = result[0];
+    }
+</script>
+</body>
+</html>
