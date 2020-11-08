@@ -22,7 +22,7 @@ def div(y, res):
     return (x, "/", y, res)
 
 
-@eel.expose
+
 def main(level):
     oper = ["+", "-", "*", "/"]
     rndoper = random.choice(oper)
@@ -72,5 +72,45 @@ def main(level):
             return div(x, y)
 
 
+a = 3
+b = '+'
+c = 1
+d = 4
+
+@eel.expose
+def get_level(level):
+    global a, b, c, d
+    a, b, c, d = main(level)
+
+@eel.expose
+def get_first_el():
+    global a
+    return a
+
+@eel.expose
+def get_znak():
+    global b
+    return b
+
+@eel.expose
+def get_second_el():
+    global c
+    return c
+
+@eel.expose
+def get_result():
+    global d
+    return d
+
+
+@eel.expose
+def comp(b):
+    global d
+    if b=='':
+        return False
+    return int(b) == d
+
+
+
 eel.init('web')
-eel.start("main.html", size = (700, 400))
+eel.start("main.html", size=(700, 400))

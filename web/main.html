@@ -11,23 +11,49 @@
 
 <div class="container-app">
     <div class="level">
-        <button id="1" onclick="main('1')">1 level</button>
-        <button id="2" onclick="main('2')">2 level</button>
-        <button id="3" onclick="main('3')">3 level</button>
+        <button class="button" id="1" onclick="main('1')">1 level</button>
+        <button class="button" id="2" onclick="main('2')">2 level</button>
+        <button class="button" id="3" onclick="main('3')">3 level</button>
     </div>
-    <div class="calculate">
-        <span id="info"></span>
-        <input>
+    <div class="example">
+        <span class = "example_items" id = 'first'></span>
+        <span class = "example_items" id = 'znak'></span>
+        <span class = "example_items" id = 'second'></span>
+        <span class = "example_items" >=</span>
+        <input class = "example_items" id = 'result'>
     </div>
+
 </div>
 
 <script type="text/javascript">
     function main(level){
-        eel.main(level)(callBack())
-    }
 
-    function callBack(result){
-        document.getElementById('info').innerHTML = result[0];
+
+        eel.get_level(level);
+        eel.get_znak()(callBackZnak);
+        eel.get_second_el()(callBackSecond);
+        eel.get_first_el()(callBackFirst);
+
+        let result = document.getElementById('result').value;
+        eel.comp(result)(callBackComp)
+
+    }
+    function callBackZnak(result){
+        document.getElementById('znak').innerHTML = result;
+    }
+    function callBackFirst(result){
+        document.getElementById('first').innerHTML = result;
+    }
+    function callBackSecond(result){
+        document.getElementById('second').innerHTML = result;
+    }
+    function callBackComp(res){
+        if (res){
+            document.getElementById('result').classList.add('true_result');
+        }
+        else {
+            document.getElementById('result').classList.add('false_result');
+        }
     }
 </script>
 </body>

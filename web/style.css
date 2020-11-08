@@ -6,8 +6,15 @@
 
 }
 .button{
-    height: 100px;
+    height: 30px;
     width: 100px;
     border: 1px;
-    background-color: cadetblue;
+    background-color: #fffb00;
+}
+
+.true_result{
+    background-color: chartreuse;
+}
+.false_result{
+    background-color: red;
 }
