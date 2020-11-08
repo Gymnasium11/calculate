@@ -1,15 +1,21 @@
-.GUI{
+.container-app{
     display: block;
     height: 700px;
     width: 400px;
     background: linear-gradient(to top left, powderblue, pink);
 
 }
+.level{
+    display: flex;
+
+}
 .button{
     height: 30px;
     width: 100px;
-    border: 1px;
-    background-color: #fffb00;
+    border: solid 1px;
+    border-color: lightslategrey;
+    border-radius: 5px;
+    background-color: cadetblue;
 }
 
 .true_result{

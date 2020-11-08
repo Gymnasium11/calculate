@@ -18,5 +18,3 @@ def div(y, res):
     return (x, "/", y, res)
 
 
-if __name__ == '__main__':
-    main()
