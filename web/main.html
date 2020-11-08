@@ -19,8 +19,8 @@
         <span class = "example_items" id = 'first'></span>
         <span class = "example_items" id = 'znak'></span>
         <span class = "example_items" id = 'second'></span>
-        <span class = "example_items" >=</span>
-        <input class = "example_items" id = 'result'>
+        <span class = "example_items activate" id="eq_sign">=</span>
+        <input class = "example_items activate" id = 'result'>
     </div>
 
 </div>
@@ -31,7 +31,8 @@
         eel.get_znak()(callBackZnak);
         eel.get_second_el()(callBackSecond);
         eel.get_first_el()(callBackFirst);
-
+        document.getElementById('eq_sign').classList.remove('activate');
+        document.getElementById('result').classList.remove('activate');
         let result = document.getElementById('result').value;
         eel.comp(result)(callBackComp)
 
