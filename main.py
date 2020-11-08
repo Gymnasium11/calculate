@@ -1,115 +1,51 @@
 import random
 import eel
+from lib import *
 
 
-def sum(x, y):
-    res = x + y
-    return (x, "+", y, res)
-
-
-def mult(x, y):
-    res = x * y
-    return (x, "*", y, res)
-
-
-def sub(y, res):
-    x = y + res
-    return (x, "-", y, res)
-
-
-def div(y, res):
-    x = y * res
-    return (x, "/", y, res)
-
-
+first_number, sign, second_number, result = 3, '+', 1, 4
 
 def main(level):
     oper = ["+", "-", "*", "/"]
     rndoper = random.choice(oper)
-    if level == "1":
-        if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-            x, y = random.randint(1, 50), random.randint(1, 50)
-        else:  # объявляю x и y, если будут действия умножения или деления
-            x, y = random.randint(1, 10), random.randint(1, 10)
-
-        if rndoper == "+":
-            return sum(x, y)
-        elif rndoper == "-":
-            return sub(x, y)
-        elif rndoper == "*":
-            return mult(x, y)
-        elif rndoper == "/":
-            return div(x, y)
-
-    elif level == "2":
-        if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-            x, y = random.randint(50, 1000), random.randint(50, 100)
-        else:  # объявляю x и y, если будут действия умножения или деления
-            x, y = random.randint(10, 40), random.randint(10, 40)
-
-        if rndoper == "+":
-            return sum(x, y)
-        elif rndoper == "-":
-            return sub(x, y)
-        elif rndoper == "*":
-            return mult(x, y)
-        elif rndoper == "/":
-            return div(x, y)
-
-    elif level == "3":
-        if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-            x, y = random.randint(1000, 10000), random.randint(1000, 10000)
-        else:  # объявляю x и y, если будут действия умножения или деления
-            x, y = random.randint(40, 50), random.randint(40, 50)
-
-        if rndoper == "+":
-            return sum(x, y)
-        elif rndoper == "-":
-            return sub(x, y)
-        elif rndoper == "*":
-            return mult(x, y)
-        elif rndoper == "/":
-            return div(x, y)
-
-
-a = 3
-b = '+'
-c = 1
-d = 4
+    dic = {'1': {'-': (1, 50), '+': (1, 50), '*': (1, 10), '/': (1, 10)},
+           '2': {'-': (50, 1000), '+': (50, 1000), '*': (10, 40), '/': (10, 40)},
+           '3': {'-': (50, 1000), '+': (1000, 10000), '*': (40, 60), '/': (40, 60)}}
+    x, y = dic[level][rndoper]
+    x, y = random.randint(x, y), random.randint(x, y)
+    d = {'+': sum(x, y), '-': sub(x, y), '*': mult(x, y), '/': div(x, y)}
+    return d[rndoper]
 
 @eel.expose
 def get_level(level):
-    global a, b, c, d
-    a, b, c, d = main(level)
+    global first_number, sign, second_number, result
+    first_number, sign, second_number, result = main(level)
+
 
 @eel.expose
 def get_first_el():
-    global a
-    return a
+    global first_number
+    return first_number
+
 
 @eel.expose
 def get_znak():
-    global b
-    return b
+    global sign
+    return sign
+
 
 @eel.expose
 def get_second_el():
-    global c
-    return c
-
-@eel.expose
-def get_result():
-    global d
-    return d
+    global second
+    return second_number
 
 
 @eel.expose
-def comp(b):
-    global d
-    if b=='':
+def comp(res):
+    global result
+    if res == '':
         return False
-    return int(b) == d
-
+    return int(res) == result
 
 
 eel.init('web')
