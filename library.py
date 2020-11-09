@@ -48,51 +48,42 @@ def div(y, res):
     return res
 
 
-# def main(level):
-#     oper = ["+", "-", "*", "/"]
-#     rndoper = random.choice(oper)
-#     if level == "1":
-#         if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-#             x, y = random.randint(1, 50), random.randint(1, 50)
-#         else:  # объявляю x и y, если будут действия умножения или деления
-#             x, y = random.randint(1, 10), random.randint(1, 10)
-#
-#         if rndoper == "+":
-#             return sum(x, y)
-#         elif rndoper == "-":
-#             return sub(x, y)
-#         elif rndoper == "*":
-#             return mult(x, y)
-#         elif rndoper == "/":
-#             return div(x, y)
-#
-#     elif level == "2":
-#         if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-#             x, y = random.randint(50, 1000), random.randint(50, 100)
-#         else:  # объявляю x и y, если будут действия умножения или деления
-#             x, y = random.randint(10, 40), random.randint(10, 40)
-#
-#         if rndoper == "+":
-#             return sum(x, y)
-#         elif rndoper == "-":
-#             return sub(x, y)
-#         elif rndoper == "*":
-#             return mult(x, y)
-#         elif rndoper == "/":
-#             return div(x, y)
-#
-#     elif level == "3":
-#         if rndoper in '+-':  # объявляю x и y, если будут действия вычитания или сложения
-#             x, y = random.randint(1000, 10000), random.randint(1000, 10000)
-#         else:  # объявляю x и y, если будут действия умножения или деления
-#             x, y = random.randint(40, 50), random.randint(40, 50)
-#
-#         if rndoper == "+":
-#             return sum(x, y)
-#         elif rndoper == "-":
-#             return sub(x, y)
-#         elif rndoper == "*":
-#             return mult(x, y)
-#         elif rndoper == "/":
-#             return div(x, y)
+#функции для кнопок
+def start(*args):
+    global point, count
+    point = count = 0
 
+
+def new(*args):
+    x1.set(rnd(0,50))
+    x2.set(rnd(0,50))
+    result.set(" ")
+    status.set('')
+    equil['state'] = 'instate'
+    equil.delete(0, 'end')
+    equil.focus()
+
+
+def calc(*args):
+    global point, count
+    user = int(answer.get())
+    summa = int(x1.get())+int(x2.get())
+    if user == summa:
+        result.set('Отлично')
+        point += 1
+    else:
+        result.set('Плохо')
+    count += 1
+    equil['state'] = 'readonly'
+
+
+def stop(*args):
+    global point, count
+    status.set('Верных ответов: '+str(point)+' Неверных ответов: '+str(count-point))
+    point = 0
+    count = 0
+    result.set("Ваш результат)")
+    equil['state'] = 'instate'
+    x1.set(0)
+    x2.set(0)
+    answer.set(0)

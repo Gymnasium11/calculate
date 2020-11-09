@@ -3,47 +3,6 @@ from tkinter import ttk
 from library import *
 
 
-#функции для кнопок
-def start(*args):
-    global point, count
-    point = count = 0
-
-
-def new(*args):
-    x1.set(rnd(0,50))
-    x2.set(rnd(0,50))
-    result.set(" ")
-    status.set('')
-    equil['state'] = 'instate'
-    equil.delete(0, 'end')
-    equil.focus()
-
-
-def calc(*args):
-    global point, count
-    user = int(answer.get())
-    summa = int(x1.get())+int(x2.get())
-    if user == summa:
-        result.set('Отлично')
-        point += 1
-    else:
-        result.set('Плохо')
-    count += 1
-    equil['state'] = 'readonly'
-
-
-def stop(*args):
-    global point, count
-    status.set('Верных ответов: '+str(point)+' Неверных ответов: '+str(count-point))
-    point = 0
-    count = 0
-    result.set("Ваш результат)")
-    equil['state'] = 'instate'
-    x1.set(0)
-    x2.set(0)
-    answer.set(0)
-
-
 root = Tk()
 root.title('Тренажер устного счета')
 point = count = 0
