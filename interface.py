@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from library import *
 
-
+# создание окошка
 root = Tk()
 root.title('Тренажер устного счета')
 point = count = 0
