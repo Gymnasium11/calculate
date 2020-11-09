@@ -2,6 +2,57 @@ from tkinter import *
 from tkinter import ttk
 from library import *
 
+
+#функции для кнопок
+def start(*args):
+    global point, count
+    point = count = 0
+
+
+def new(*args):
+    x1.set(random.randint(0,50))
+    x2.set(random.randint(0,50))
+    oper.set(random.choice(list))
+    result.set(" ")
+    status.set('')
+    equil['state'] = 'instate'
+    equil.delete(0, 'end')
+    equil.focus()
+
+
+def calc(*args):
+    global point, count
+    user = int(answer.get())
+    if oper == "+":
+        res = plus(x,y)
+    elif oper == "-":
+        res = minus(x,y)
+    elif oper == "*":
+        res = multiply(x,y)
+    else:
+        res = div(x,y)
+    if user == res:
+        result.set('Отлично')
+        point += 1
+    else:
+        result.set('Плохо')
+    count += 1
+    equil['state'] = 'readonly'
+
+
+def stop(*args):
+    global point, count
+    status.set('Верных ответов: '+str(point)+' Неверных ответов: '+str(count-point))
+    point = 0
+    count = 0
+    result.set("Ваш результат)")
+    equil['state'] = 'instate'
+    x1.set(0)
+    oper.set("+")
+    x2.set(0)
+    answer.set(0)
+
+
 # создание окошка
 root = Tk()
 root.title('Тренажер устного счета')
@@ -12,6 +63,7 @@ x2 = StringVar()
 answer = StringVar()
 result = StringVar()
 status = StringVar()
+oper = StringVar()
 x1.set(0)
 x2.set(0)
 answer.set(0)
@@ -20,7 +72,7 @@ answer.set(0)
 frm_1 = ttk.Frame(root, padding="30")
 frm_1.grid(column=0, row=0, sticky=(W, E))
 ttk.Label(frm_1, textvariable=x1, font='Arial 45').grid(row=3, column=1, columnspan=2)
-ttk.Label(frm_1, text='+', font='Arial 45').grid(row=3, column=3, sticky=(W, E))
+ttk.Label(frm_1, textvariable=oper, font='Arial 45').grid(row=3, column=3, sticky=(W, E))
 ttk.Label(frm_1, textvariable=x2, font='Arial 45').grid(row=3, column=4, columnspan=2)
 ttk.Label(frm_1, text='=', font='Arial 45').grid(row=3, column=6)
 equil = ttk.Entry(frm_1, width=3, font='Arial 45', textvariable=answer)
